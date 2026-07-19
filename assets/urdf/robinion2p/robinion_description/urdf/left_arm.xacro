@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="left_arm" params="parent">
+
+    <joint name="left_shoulder_pitch_joint" type="revolute">
+      <parent link="${parent}"/>
+      <child link="left_shoulder_pitch_link"/>
+      <origin xyz="-0.02089 0.0815 0.1388" rpy="0 0.0873 0"/>
+      <axis xyz="0 1 0"/>
+      <limit velocity="3.14" effort="10.6" lower="${-pi*0.9}" upper="${pi*0.9}"/>
+      <dynamics damping="0.1" friction="0.0"/>
+    </joint>
+
+    <link name="left_shoulder_pitch_link">
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://robinion_description/meshes/left_shoulder_pitch_visual.stl"/>
+        </geometry>
+      </visual>
+
+      <inertial>
+        <origin xyz="0.000000 0.010235 -0.004313" rpy="0.0 0.0 0.0"/>
+        <mass value="0.044923"/>
+        <inertia
+          ixx="0.000013" ixy="0.000000" ixz="0.000000"
+          iyy="0.000027" iyz="-0.000003"
+          izz="0.000025"/>
+      </inertial>
+    </link>
+
+    <joint name="left_shoulder_roll_joint" type="revolute">
+      <parent link="left_shoulder_pitch_link"/>
+      <child link="left_shoulder_roll_link"/>
+      <origin xyz="0.0245 0.030017 -0.022" rpy="0.0 0.0 0.0"/>
+      <axis xyz="1 0 0"/>
+      <limit velocity="3.14" effort="10.6" lower="${-pi*0.5}" upper="${pi*0.5}"/>
+      <dynamics damping="0.1" friction="0.0"/>
+    </joint>
+
+    <link name="left_shoulder_roll_link">
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://robinion_description/meshes/left_shoulder_roll_visual.stl"/>
+        </geometry>
+      </visual>
+
+      <collision>
+        <origin xyz="-0.0245 0.057 0.0" rpy="0.0 0.0 0.0"/>
+        <geometry>
+          <box size="0.05 0.127 0.05" />
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="-0.027891 0.046707 0.000000" rpy="0.0 0.0 0.0"/>
+        <mass value="0.389041"/>
+        <inertia
+          ixx="0.000698" ixy="-0.000079" ixz="0.000000"
+          iyy="0.000117" iyz="0.000000"
+          izz="0.000753"/>
+      </inertial>
+    </link>
+
+    <joint name="left_elbow_yaw_joint" type="revolute">
+      <parent link="left_shoulder_roll_link"/>
+      <child link="left_elbow_yaw_link"/>
+      <origin xyz="-0.0245 0.118 0.000" rpy="${pi*0.5} 0.0 0.0"/>
+      <axis xyz="0 0 1"/>
+      <limit velocity="4.82" effort="4.1" lower="${-pi*0.9}" upper="${pi*0.9}"/>
+      <dynamics damping="0.1" friction="0.0"/>
+    </joint>
+
+    <link name="left_elbow_yaw_link">
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="${-pi*0.5} 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://robinion_description/meshes/left_elbow_yaw_visual.stl"/>
+        </geometry>
+      </visual>
+      
+      <inertial>
+        <origin xyz="0.003756 0.032656 0.000000" rpy="0.0 0.0 0.0"/>
+        <mass value="0.051730"/>
+        <inertia
+          ixx="0.000036" ixy="0.000005" ixz="0.000000"
+          iyy="0.000028" iyz="0.000000"
+          izz="0.000025"/>
+      </inertial>
+    </link>
+
+    <joint name="left_elbow_pitch_joint" type="revolute">
+      <parent link="left_elbow_yaw_link"/>
+      <child link="left_elbow_pitch_link"/>
+      <origin xyz="0.022 0.0245 -0.06" rpy="0.0 0.0 0.0"/>
+      <axis xyz="0 1 0"/>
+      <limit velocity="3.14" effort="10.6" lower="${-pi*0.5}" upper="${pi*0.5}"/>
+      <dynamics damping="0.1" friction="0.0"/>
+    </joint> 
+
+    <link name="left_elbow_pitch_link">
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="${-pi*0.5} 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://robinion_description/meshes/left_elbow_pitch_visual.stl"/>
+        </geometry>
+      </visual>
+
+      <collision>
+        <origin xyz="0.0 -0.0245 -0.028" rpy="0.0 0.0 0.0"/>
+        <geometry>
+          <box size="0.04 0.049 0.078" />
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0.000000 0.018081 -0.023869" rpy="0.0 0.0 0.0"/>
+        <mass value="0.246669"/>
+        <inertia
+          ixx="0.000135" ixy="0.000000" ixz="0.000000"
+          iyy="0.000064" iyz="-0.000001"
+          izz="0.000121"/>
+      </inertial>
+    </link>
+
+    <joint name="l_gripper_fixed_joint" type="fixed">
+      <parent link="left_elbow_pitch_link"/>
+      <child link="left_gripper"/>
+      <origin xyz="0.0 -0.0245 -0.068" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <link name="left_gripper">
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="${-pi*0.5} 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://robinion_description/meshes/left_gripper_visual.stl"/>
+        </geometry>
+      </visual>
+
+      <collision>
+        <origin xyz="0.0 0.0 -0.05" rpy="0.0 0.0 0.0"/>
+        <geometry>
+          <box size="0.05 0.06 0.09" />
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0.000002 0.043774 0.003217" rpy="0.0 0.0 0.0"/>
+        <mass value="0.216195"/>
+        <inertia
+          ixx="0.000183" ixy="0.000000" ixz="0.000000"
+          iyy="0.000104" iyz="0.000015"
+          izz="0.000191"/>
+      </inertial>
+    </link>
+
+  </xacro:macro>
+
+</robot>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<robot name="robinion" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find robinion_description)/urdf/body.xacro"/>
+  <xacro:include filename="$(find robinion_description)/urdf/head.xacro"/>
+
+  <xacro:include filename="$(find robinion_description)/urdf/right_arm.xacro"/>
+  <xacro:include filename="$(find robinion_description)/urdf/left_arm.xacro"/>
+
+  <xacro:include filename="$(find robinion_description)/urdf/right_leg.xacro"/>
+  <xacro:include filename="$(find robinion_description)/urdf/left_leg.xacro"/>
+
+  <xacro:include filename="$(find robinion_description)/urdf/ros2_control.xacro"/>
+
+  <xacro:body/>
+
+  <xacro:head parent="upper_body_link"/>
+
+  <xacro:right_arm parent="upper_body_link"/>
+  <xacro:left_arm parent="upper_body_link"/>
+
+  <xacro:right_leg parent="lower_body_link"/>
+  <xacro:left_leg parent="lower_body_link"/>
+
+  <xacro:ros2_control name="Robinion2System"/>
+
+</robot>
