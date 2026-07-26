@@ -4,7 +4,7 @@ from isaaclab.assets import ArticulationCfg
 from isaaclab.actuators import ImplicitActuatorCfg
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-USD_PATH = os.path.abspath(os.path.join(CURRENT_DIR, "fix_body.usd"))
+USD_PATH = os.path.abspath(os.path.join(CURRENT_DIR, "usd/fix_body.usd"))
 
 ROBINION_CONFIG = ArticulationCfg(
     prim_path="{ENV_REGEX_NS}/Robot",
