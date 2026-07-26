@@ -61,5 +61,5 @@ To run the simulation without rendering the UI (Headless mode for faster trainin
     ./isaaclab.sh -p train-p scripts/reinforcement_learning/rsl_rl/train.py --task=Isaac-Velocity-Rough-H1-v0 --headless
 
 To adjust the number of parallel environment instances:
-    ```bash
+    
     ./isaaclab.sh -p train-p scripts/reinforcement_learning/rsl_rl/train.py --task=Isaac-Velocity-Rough-H1-v0 --num_envs=10
