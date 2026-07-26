@@ -32,7 +32,7 @@ This step serves as an initial environment test to verify that your GPU setup, R
 
 To test the default training workflow, run:
 
-    ./isaaclab.sh -p train-p scripts/reinforcement_learning/rsl_rl/train.py --task=Isaac-Velocity-Rough-H1-v0
+    ./isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/train.py --task=Isaac-Velocity-Rough-H1-v0
 
 ## Setup Project Workspace
 
@@ -54,12 +54,12 @@ Clone the repository into your home directory:
 ### 3. Train with the Robinion Model
 Now that the Robinion assets and custom environment configurations have been successfully integrated into your Isaac Lab installation, you can launch the RL training process using the custom task:
 
-    ./isaaclab.sh -p train-p scripts/reinforcement_learning/rsl_rl/train.py --task=Isaac-Velocity-Rough-H1-v0 
+    ./isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/train.py --task=Isaac-Velocity-Rough-H1-v0 
 
 To run the simulation without rendering the UI (Headless mode for faster training):
 
-    ./isaaclab.sh -p train-p scripts/reinforcement_learning/rsl_rl/train.py --task=Isaac-Velocity-Rough-H1-v0 --headless
+    ./isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/train.py --task=Isaac-Velocity-Rough-H1-v0 --headless
 
 To adjust the number of parallel environment instances:
     
-    ./isaaclab.sh -p train-p scripts/reinforcement_learning/rsl_rl/train.py --task=Isaac-Velocity-Rough-H1-v0 --num_envs=10
+    ./isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/train.py --task=Isaac-Velocity-Rough-H1-v0 --num_envs=10
