@@ -1,4 +1,4 @@
-# Robinion Isaaclab User Guide
+# Robinion IsaacLab User Guide
 This guide provides the steps to set up the workspace, create a virtual environment, and test Reinforcement Learning (RL) simulation for our Robinion humanoid robot using **NVIDIA Isaac Lab**.
 
 ---
